@@ -1,6 +1,6 @@
 ### About
 By now, in android project the commendation is using `Composing builds` and managing the libs version in a version catalog file.
-so this repository is for that(refer to [nowinandroid](https://github.com/android/nowinandroid)).
+so this repository is for that.
 Using it as a submodule, will reduce almost 80% gradle config in you project.
 
 ### How To Use
@@ -47,3 +47,6 @@ For example, in native Android project, Hilt is better than Koin for DI, but in
 KMP project, Koin will be better.
 So plan to support multi type of `version catalog file` as several files.
 To using the one you need.
+
+### Refer
+[nowinandroid](https://github.com/android/nowinandroid)
