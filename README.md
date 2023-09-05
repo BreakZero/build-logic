@@ -37,3 +37,13 @@ dependencies {
     implementation(libs.androidx.activity.compose)
 }
 ```
+
+### Samples
+there is a (Sample)["https://github.com/BreakZero/Build-Logic-UsingExample"]
+
+### Plan 
+In fact, when we are in different project, we will use different libraries.
+For example, in native Android project, Hilt is better than Koin for DI, but in
+KMP project, Koin will be better.
+So plan to support multi type of `version catalog file` as several files.
+To using the one you need.
