@@ -1,7 +1,7 @@
 ### About
 By now, in android project the commendation is using `Composing builds` and managing the libs version in a version catalog file.
 so this repository is for that.
-Using it as a submodule, will reduce almost 80% gradle config in you project.
+Using it as a submodule, will reduce almost 80% gradle config in your project.
 
 ### How To Use
 add as submodule in you project
