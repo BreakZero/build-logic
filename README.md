@@ -12,7 +12,7 @@ update root project `build.gradle.kts`
 ```kotlin
 plugins {
     alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlinAndroid) apply false
+    alias(libs.plugins.kotlin-android) apply false
 }
 ```
 create `versionCatalogs` in root project `settings.gradle.kts` dependencyResolutionManagement block
