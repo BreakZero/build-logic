@@ -34,7 +34,7 @@ plugins {
 
 dependencies {
     implementation(libs.core.ktx)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.activity)
 }
 ```
 

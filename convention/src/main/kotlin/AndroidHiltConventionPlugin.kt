@@ -27,9 +27,9 @@ class AndroidHiltConventionPlugin : Plugin<Project> {
                 apply("dagger.hilt.android.plugin")
             }
             dependencies {
-                "implementation"(libs.findLibrary("hilt.android").get())
-                "kapt"(libs.findLibrary("hilt.compiler").get())
-                "kaptAndroidTest"(libs.findLibrary("hilt.compiler").get())
+//                "implementation"(libs.findLibrary("hilt.android").get())
+//                "kapt"(libs.findLibrary("hilt.compiler").get())
+//                "kaptAndroidTest"(libs.findLibrary("hilt.compiler").get())
             }
         }
     }

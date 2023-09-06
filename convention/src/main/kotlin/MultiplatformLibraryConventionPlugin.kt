@@ -76,7 +76,8 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
 
                 (this as ExtensionAware).extensions.configure<CocoapodsExtension> {
                     val isDataModule = project.name == "data"
-                    summary = "Wallet cocoapod submodule"
+                    // TODO change to your information
+                    summary = "cocoapod submodule"
                     homepage = "dejinlu.com"
                     authors = "Dougie"
                     version = "1.0"
