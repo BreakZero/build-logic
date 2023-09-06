@@ -42,9 +42,9 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
 
                 val bom = libs.findLibrary("androidx-compose-bom").get()
-                val composeBundle = libs.findBundle("compose.android.bundle")
-                val koinBundle = libs.findBundle("koin.android.bundle")
-                val testBundle = libs.findBundle("junit.test.bundle")
+                val composeBundle = libs.findBundle("compose.android.bundle").get()
+                val koinBundle = libs.findBundle("koin.android.bundle").get()
+                val testBundle = libs.findBundle("junit.test.bundle").get()
 
                 add("implementation", platform(bom))
                 add("implementation", composeBundle)
