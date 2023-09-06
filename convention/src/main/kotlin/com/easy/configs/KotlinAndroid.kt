@@ -47,7 +47,6 @@ internal fun Project.configureKotlinAndroid(
         compileOptions {
             sourceCompatibility = JavaVersion.VERSION_17
             targetCompatibility = JavaVersion.VERSION_17
-            isCoreLibraryDesugaringEnabled = true
         }
 
         kotlinOptions {
@@ -66,10 +65,6 @@ internal fun Project.configureKotlinAndroid(
 
             jvmTarget = JavaVersion.VERSION_17.toString()
         }
-    }
-
-    dependencies {
-//    add("coreLibraryDesugaring", libs.findLibrary("android.desugarJdkLibs").get())
     }
 }
 
