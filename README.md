@@ -19,10 +19,11 @@ create `versionCatalogs` in root project `settings.gradle.kts` dependencyResolut
 ```kotlin
 versionCatalogs {
     create("libs") {
-        from(files("./build-logic/libs.versions.toml"))
+        from(files("./build-logic/default.versions.toml"))
     }
 }
 ```
+also you can create a new versions.toml in you project `gradle` folder. already exist some commendation in `catalogs` folder.
 sync the project, then you can use the plugins and libs as below:
 ```kotlin
 plugins {
