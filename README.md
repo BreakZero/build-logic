@@ -9,9 +9,10 @@ Using it as a submodule, will reduce almost 80% gradle config in your project.
 ```shell
 git submodule add https://github.com/BreakZero/build-logic
 ```
+
 ### Step 2
 Creating version catalog
-- Option1 
+- #### Option1 
 Using the default provided `default.versions.toml` in root folder.
 1. Open project `settings.gradle.kts`, 
 2. add below code into `dependencyResolutionManagement` block
@@ -22,7 +23,8 @@ versionCatalogs {
     }
 }
 ```
-- Option2
+
+- #### Option2
 Manage by local file
 1. In project `gradle` folder, create a catalog file named `libs.versions.toml`
 2. Refer `default.versions.toml` to full you local version catalog
