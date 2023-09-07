@@ -1,21 +1,20 @@
-### About
+## About
 By now, in android project the commendation is using `Composing builds` and managing the libs version in a version catalog file.
 so this repository is for that.
 Using it as a submodule, will reduce almost 80% gradle config in your project.
 
-### How To Use
-add as submodule in you project
+## How To Use
+### Step 1
+  Using as submodule in your project with git command.
 ```shell
 git submodule add https://github.com/BreakZero/build-logic
 ```
-update root project `build.gradle.kts`
-```kotlin
-plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin-android) apply false
-}
-```
-create `versionCatalogs` in root project `settings.gradle.kts` dependencyResolutionManagement block
+### Step 2
+Creating version catalog
+- Option1 
+Using the default provided `default.versions.toml` in root folder.
+1. Open project `settings.gradle.kts`, 
+2. add below code into `dependencyResolutionManagement` block
 ```kotlin
 versionCatalogs {
     create("libs") {
@@ -23,8 +22,21 @@ versionCatalogs {
     }
 }
 ```
-also you can create a new versions.toml in you project `gradle` folder. already exist some commendation in `catalogs` folder.
-sync the project, then you can use the plugins and libs as below:
+- Option2
+Manage by local file
+1. In project `gradle` folder, create a catalog file named `libs.versions.toml`
+2. Refer `default.versions.toml` to full you local version catalog
+> Note: You have to add some default that used in plugin, search `findLibrary` or `findBundle` in content
+
+### Step 3
+Sync the project, and you can use it.<br>
+For example plugin:
+```kotlin
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin-android) apply false
+}   
+```
 ```kotlin
 plugins {
     id("easy.android.application")
@@ -32,22 +44,25 @@ plugins {
     id("easy.android.application.jacoco")
     id("jacoco")
 }
-
+```
+  
+For example dependencies:
+```kotlin
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.androidx.compose.activity)
-}
+}   
 ```
 
-### Samples
+## Samples
 there is a (Sample)["https://github.com/BreakZero/Build-Logic-UsingExample"]
 
-### Plan 
-In fact, when we are in different project, we will use different libraries.
+## Plan 
+In fact, when we are in different project, we will use different libraries.<br>
 For example, in native Android project, Hilt is better than Koin for DI, but in
-KMP project, Koin will be better.
+KMP project, Koin will be better.<br>
 So plan to support multi type of `version catalog file` as several files.
 To using the one you need.
 
-### Refer
+## Refer
 [nowinandroid](https://github.com/android/nowinandroid)
