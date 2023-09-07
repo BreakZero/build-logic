@@ -57,7 +57,7 @@ dependencies {
 ```
 
 ## Samples
-there is a [Sample](https://github.com/BreakZero/Build-Logic-UsingExample)
+Here is a [Sample](https://github.com/BreakZero/Build-Logic-UsingExample)
 
 ## Plan 
 In fact, when we are in different project, we will use different libraries.<br>
