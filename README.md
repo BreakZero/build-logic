@@ -25,13 +25,13 @@ versionCatalogs {
 ```
 
 - #### Option2
-Manage by local file
+Managed by local file
 1. In project `gradle` folder, create a catalog file named `libs.versions.toml`
 2. Refer `default.versions.toml` to full you local version catalog
 > Note: You have to add some default that used in plugin, search `findLibrary` or `findBundle` in content
 
 ### Step 3
-Sync the project, and you can use it.<br>
+Sync the project, and you can use it like below.<br>
 For example plugin:
 ```kotlin
 plugins {
