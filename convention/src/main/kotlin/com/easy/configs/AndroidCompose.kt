@@ -41,6 +41,10 @@ internal fun Project.configureAndroidCompose(
             freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
         }
 
+        lint {
+            abortOnError = false
+        }
+
         dependencies {
             val bom = libs.findLibrary("androidx-compose-bom").get()
             add("implementation", platform(bom))

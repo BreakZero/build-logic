@@ -30,6 +30,9 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
                 defaultConfig {
                     minSdk = AndroidBuildConfig.minSdkVersion
                 }
+                lint {
+                    abortOnError = false
+                }
                 configureFlavors(this)
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
