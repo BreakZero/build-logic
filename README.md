@@ -27,8 +27,8 @@ versionCatalogs {
 - #### Option2
 Managed by local file
 1. In project `gradle` folder, create a catalog file named `libs.versions.toml`
-2. Refer `default.versions.toml` to full you local version catalog
-> Note: You have to add some default(default.versions.toml) that used in plugin, cause plugins need them.
+2. Copy content from `default.versions.toml` into your local file, and add the others that you want.
+> Note: You have to add default content from `default.versions.toml`, cause plugins need them.
 
 ### Step 3
 Sync the project, and you can use it like below.<br>
