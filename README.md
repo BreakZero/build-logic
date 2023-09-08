@@ -28,7 +28,7 @@ versionCatalogs {
 Managed by local file
 1. In project `gradle` folder, create a catalog file named `libs.versions.toml`
 2. Refer `default.versions.toml` to full you local version catalog
-> Note: You have to add some default that used in plugin, search `findLibrary` or `findBundle` in content
+> Note: You have to add some default(default.versions.toml) that used in plugin, cause plugins need them.
 
 ### Step 3
 Sync the project, and you can use it like below.<br>
@@ -63,8 +63,8 @@ Here is a [Sample](https://github.com/BreakZero/Build-Logic-UsingExample)
 In fact, when we are in different project, we will use different libraries.<br>
 For example, in native Android project, Hilt is better than Koin for DI, but in
 KMP project, Koin will be better.<br>
-So plan to support multi type of `version catalog file` as several files.
-To using the one you need.
+So plan to support multi type of `version catalog file` as several files.<br>
+Clean plugins
 
 ## Refer
 [nowinandroid](https://github.com/android/nowinandroid)
