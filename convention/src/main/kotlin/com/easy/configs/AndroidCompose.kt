@@ -28,6 +28,7 @@ internal fun Project.configureAndroidCompose(
     commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     commonExtension.apply {
+        compileSdk = AndroidBuildConfig.compileSdkVersion
         defaultConfig {
             minSdk = AndroidBuildConfig.minSdkVersion
         }

@@ -16,6 +16,7 @@
 
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
+import com.easy.configs.configureFlavors
 import com.easy.configs.configureKotlinAndroid
 import com.easy.configs.configurePrintApksTask
 import org.gradle.api.Plugin
@@ -33,6 +34,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = AndroidBuildConfig.targetSdkVersion
+                configureFlavors(this)
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
                 configurePrintApksTask(this)
