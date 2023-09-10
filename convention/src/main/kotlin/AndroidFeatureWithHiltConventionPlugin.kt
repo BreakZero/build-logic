@@ -15,6 +15,7 @@
  */
 
 import com.android.build.gradle.LibraryExtension
+import com.easy.configs.configureAndroidCompose
 import com.easy.configs.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -29,16 +30,10 @@ class AndroidFeatureWithHiltConventionPlugin : Plugin<Project> {
                 apply("easy.android.hilt")
             }
             extensions.configure<LibraryExtension> {
+                configureAndroidCompose(this)
                 defaultConfig {
                     // testInstrumentationRunner = "com.easy.defi.app.core.testing.EasyTestRunner"
                 }
-            }
-            dependencies {
-                add("implementation", libs.findLibrary("coil.kt").get())
-                add("implementation", libs.findLibrary("coil.kt.compose").get())
-
-                add("implementation", libs.findLibrary("androidx.compose.viewmodel").get())
-                add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
             }
         }
     }
