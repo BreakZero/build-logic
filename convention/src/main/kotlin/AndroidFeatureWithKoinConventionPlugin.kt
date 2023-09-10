@@ -37,7 +37,6 @@ class AndroidFeatureWithKoinConventionPlugin : Plugin<Project> {
                 defaultConfig {
                     // testInstrumentationRunner = "com.easy.defi.app.core.testing.EasyTestRunner"
                 }
-                configureFlavors(this)
             }
             dependencies {
                 add("implementation", libs.findLibrary("koin-compose").get())
