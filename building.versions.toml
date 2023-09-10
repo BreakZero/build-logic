@@ -1,4 +1,5 @@
 [versions]
+version = "1.0..0"
 org-jetbrains-kotlin = "1.9.0"
 android-gradle-plugin = "8.1.1"
 
@@ -6,3 +7,17 @@ android-gradle-plugin = "8.1.1"
 # Dependencies of the included build-logic
 android-tools-build = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle-plugin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
+
+[plugins]
+easy-android-application = { id = "easy.android.application", version.ref = "version" }
+easy-android-application-compose = { id = "easy.android.application.compose", version.ref = "version" }
+easy-android-application-jacoco = { id = "easy.android.application.jacoco", version.ref = "version" }
+easy-android-library = { id = "easy.android.library", version.ref = "version" }
+easy-android-library-compose = { id = "easy.android.library.compose", version.ref = "version" }
+easy-android-library-jacoco = { id = "easy.android.library.jacoco", version.ref = "version" }
+easy-multiplatform-library = { id = "easy.multiplatform.library", version.ref = "version" }
+easy-android-feature = { id = "easy.android.feature", version.ref = "version" }
+easy-android-hilt-feature = { id = "easy.android.hilt.feature", version.ref = "version" }
+easy-android-test = { id = "easy.android.test", version.ref = "version" }
+easy-android-hilt = { id = "easy.android.hilt", version.ref = "version" }
+easy-firebase-perf = { id = "easy.firebase-perf", version.ref = "version" }

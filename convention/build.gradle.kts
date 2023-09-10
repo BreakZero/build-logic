@@ -18,7 +18,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.easy.configs.buildlogic"
+group = "com.easy.plugin.buildlogic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -26,54 +26,59 @@ java {
 }
 
 dependencies {
-    compileOnly(libs.android.tools.build)
-    compileOnly(libs.kotlin.gradle.plugin)
+    compileOnly(easy.android.tools.build)
+    compileOnly(easy.kotlin.gradle.plugin)
 }
 
 gradlePlugin {
+    version = easy.versions.version
     plugins {
         register("androidApplicationCompose") {
-            id = "easy.android.application.compose"
+            id = easy.plugins.easy.android.application.compose.get().pluginId
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
         register("androidApplication") {
-            id = "easy.android.application"
+            id = easy.plugins.easy.android.application.asProvider().get().pluginId
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidApplicationJacoco") {
-            id = "easy.android.application.jacoco"
+            id = easy.plugins.easy.android.application.jacoco.get().pluginId
             implementationClass = "AndroidApplicationJacocoConventionPlugin"
         }
         register("androidLibraryCompose") {
-            id = "easy.android.library.compose"
+            id = easy.plugins.easy.android.library.compose.get().pluginId
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
         register("androidLibrary") {
-            id = "easy.android.library"
+            id = easy.plugins.easy.android.library.asProvider().get().pluginId
             implementationClass = "AndroidLibraryConventionPlugin"
         }
         register("multiplatformLibrary") {
-            id = "easy.multiplatform.library"
+            id = easy.plugins.easy.multiplatform.library.get().pluginId
             implementationClass = "MultiplatformLibraryConventionPlugin"
         }
         register("androidFeature") {
-            id = "easy.android.feature"
+            id = easy.plugins.easy.android.feature.get().pluginId
             implementationClass = "AndroidFeatureConventionPlugin"
         }
+        register("androidHiltFeature") {
+            id = easy.plugins.easy.android.hilt.feature.get().pluginId
+            implementationClass = "AndroidFeatureWithHiltConventionPlugin"
+        }
         register("androidLibraryJacoco") {
-            id = "easy.android.library.jacoco"
+            id = easy.plugins.easy.android.library.jacoco.get().pluginId
             implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
         register("androidTest") {
-            id = "easy.android.test"
+            id = easy.plugins.easy.android.test.get().pluginId
             implementationClass = "AndroidTestConventionPlugin"
         }
         register("androidHilt") {
-            id = "easy.android.hilt"
+            id = easy.plugins.easy.android.hilt.asProvider().get().pluginId
             implementationClass = "AndroidHiltConventionPlugin"
         }
         register("firebase-perf") {
-            id = "easy.firebase-perf"
+            id = easy.plugins.easy.firebase.perf.get().pluginId
             implementationClass = "FirebasePerfConventionPlugin"
         }
     }

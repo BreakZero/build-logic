@@ -20,7 +20,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
     versionCatalogs {
-        create("libs") {
+        create("easy") {
             from(files("./building.versions.toml"))
         }
     }

@@ -6,19 +6,19 @@ import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
 
 enum class FlavorDimension {
-    contentType
+    Environment, ContentType
 }
 
 enum class Flavor(val dimension: FlavorDimension, val applicationIdSuffix: String? = null) {
-    staging(FlavorDimension.contentType, ".staging"),
-    prod(FlavorDimension.contentType)
+    staging(FlavorDimension.Environment, ".staging"),
+    prod(FlavorDimension.Environment)
 }
 
 fun Project.configureFlavors(
     commonExtension: CommonExtension<*, *, *, *, *>
 ) {
     commonExtension.apply {
-        flavorDimensions += FlavorDimension.contentType.name
+        flavorDimensions += FlavorDimension.Environment.name
         productFlavors {
             Flavor.values().forEach {
                 create(it.name) {

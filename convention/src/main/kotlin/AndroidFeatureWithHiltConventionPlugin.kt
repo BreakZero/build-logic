@@ -14,21 +14,31 @@
  *   limitations under the License.
  */
 
+import com.android.build.gradle.LibraryExtension
 import com.easy.configs.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
-class AndroidHiltConventionPlugin : Plugin<Project> {
+class AndroidFeatureWithHiltConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            with(pluginManager) {
-                apply("com.google.devtools.ksp")
-                apply("dagger.hilt.android.plugin")
+            pluginManager.apply {
+                apply("easy.android.library")
+                apply("easy.android.hilt")
+            }
+            extensions.configure<LibraryExtension> {
+                defaultConfig {
+                    // testInstrumentationRunner = "com.easy.defi.app.core.testing.EasyTestRunner"
+                }
             }
             dependencies {
-                add("implementation", libs.findLibrary("hilt.android").get())
-                add("ksp", libs.findLibrary("hilt.compiler").get())
+                add("implementation", libs.findLibrary("coil.kt").get())
+                add("implementation", libs.findLibrary("coil.kt.compose").get())
+
+                add("implementation", libs.findLibrary("androidx.compose.viewmodel").get())
+                add("implementation", libs.findLibrary("kotlinx.coroutines.android").get())
             }
         }
     }

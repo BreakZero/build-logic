@@ -16,6 +16,7 @@
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
+import com.android.build.gradle.AbstractAppExtension
 import com.easy.configs.configureFlavors
 import com.easy.configs.configureKotlinAndroid
 import com.easy.configs.configurePrintApksTask
@@ -42,14 +43,9 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             }
 
             // rename output file
-            /*extensions.configure<AbstractAppExtension> {
-                applicationVariants.all {
-                    this.outputs.all {
-                        val outputFileName = "${applicationId}-v${versionName}(${this.versionCode})-${name}.${outputFile.extension}"
-                        (this as BaseVariantOutputImpl).outputFileName = outputFileName
-                    }
-                }
-            }*/
+            extensions.configure<AbstractAppExtension> {
+                configOutputName(this)
+            }
             extensions.configure<ApplicationAndroidComponentsExtension> {
                 configurePrintApksTask(this)
             }
