@@ -28,25 +28,14 @@ internal fun Project.configureAndroidCompose(
     commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     commonExtension.apply {
-        compileSdk = AndroidBuildConfig.compileSdkVersion
-        defaultConfig {
-            minSdk = AndroidBuildConfig.minSdkVersion
-        }
-        buildFeatures {
-            compose = true
+        configureKotlinAndroid(this)
+        kotlinOptions {
+            freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
         }
 
         composeOptions {
             kotlinCompilerExtensionVersion =
                 libs.findVersion("compose-compiler").get().toString()
-        }
-
-        kotlinOptions {
-            freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
-        }
-
-        lint {
-            abortOnError = false
         }
 
         dependencies {

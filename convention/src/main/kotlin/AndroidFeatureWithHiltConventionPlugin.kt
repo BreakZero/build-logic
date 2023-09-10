@@ -37,7 +37,6 @@ class AndroidFeatureWithHiltConventionPlugin : Plugin<Project> {
                 defaultConfig {
                     // testInstrumentationRunner = "com.easy.defi.app.core.testing.EasyTestRunner"
                 }
-                configureFlavors(this)
             }
         }
     }

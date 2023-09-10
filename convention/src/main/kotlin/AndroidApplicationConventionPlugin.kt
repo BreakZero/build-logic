@@ -39,7 +39,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                     targetSdk = AndroidBuildConfig.targetSdkVersion
                 }
                 configureKotlinAndroid(this)
-                configureFlavors(this)
             }
 
             // rename output file
