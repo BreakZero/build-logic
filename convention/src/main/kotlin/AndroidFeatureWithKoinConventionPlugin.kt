@@ -16,6 +16,7 @@
 
 import com.android.build.gradle.LibraryExtension
 import com.easy.configs.configureAndroidCompose
+import com.easy.configs.configureFlavors
 import com.easy.configs.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -36,6 +37,7 @@ class AndroidFeatureWithKoinConventionPlugin : Plugin<Project> {
                 defaultConfig {
                     // testInstrumentationRunner = "com.easy.defi.app.core.testing.EasyTestRunner"
                 }
+                configureFlavors(this)
             }
             dependencies {
                 add("implementation", libs.findLibrary("koin-compose").get())
