@@ -38,6 +38,10 @@ internal fun Project.configureAndroidCompose(
                 libs.findVersion("compose-compiler").get().toString()
         }
 
+        buildFeatures {
+            compose = true
+        }
+
         dependencies {
             val bom = libs.findLibrary("androidx-compose-bom").get()
             val composeBundle = libs.findBundle("compose.android.bundle").get()
