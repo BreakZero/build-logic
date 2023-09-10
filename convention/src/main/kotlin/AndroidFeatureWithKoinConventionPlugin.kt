@@ -38,7 +38,7 @@ class AndroidFeatureWithKoinConventionPlugin : Plugin<Project> {
                 }
             }
             dependencies {
-                add("implementation", libs.findLibrary("koin-compose"))
+                add("implementation", libs.findLibrary("koin-compose").get())
             }
         }
     }
