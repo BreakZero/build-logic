@@ -1,6 +1,5 @@
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
-import com.easy.configs.configureFlavors
 import com.easy.configs.configurePrintApksTask
 import com.easy.configs.libs
 import org.gradle.api.JavaVersion
@@ -33,7 +32,6 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
                 lint {
                     abortOnError = false
                 }
-                configureFlavors(this)
             }
             extensions.configure<LibraryAndroidComponentsExtension> {
                 configurePrintApksTask(this)
