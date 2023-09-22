@@ -76,7 +76,6 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
                 }
 
                 (this as ExtensionAware).extensions.configure<CocoapodsExtension> {
-                    val isDataModule = project.name == "data"
                     // TODO change to your information
                     summary = "cocoapod submodule"
                     homepage = "dejinlu.com"
@@ -85,10 +84,7 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
                     ios.deploymentTarget = "16.0"
                     framework {
                         baseName = project.name
-                        isStatic = isDataModule
-                        if (!isStatic) {
-                            embedBitcode(BitcodeEmbeddingMode.BITCODE)
-                        }
+                        embedBitcode(BitcodeEmbeddingMode.BITCODE)
                     }
                 }
             }
