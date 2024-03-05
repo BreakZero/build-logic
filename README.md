@@ -1,62 +1,62 @@
-## About
-By now, in android project the commendation is using `Composing builds` and managing the libs version in a version catalog file.
-so this repository is for that.
-Using it as a submodule, will reduce almost 80% gradle config in your project.
+## 关于
+`Composing Build` + Version catalogs 作为Android推荐的包管理方式。
+该仓库就是参考`nowinandroid`提取出来的。提供了多种`Gradle Plugin`简化Android/Kotlin Multiplatform项目的Gradle 配置。
+作为submodule使用，可以大量减少配置文件，方便管理。
 
-## How To Use
-### Step 1
-  Using as submodule in your project with git command.
-```shell
-git submodule add https://github.com/BreakZero/build-logic
-```
+## 使用
+1. 作为submodule应用到项目中 
+    在已进行git初始化的项目下使用如下命令添加submodule
+    ```shell
+    git submodule add https://github.com/BreakZero/build-logic
+    ```
 
-### Step 2
-Creating version catalog
-- #### Option1 
-Using the default provided `default.versions.toml` in root folder.
-1. Open project `settings.gradle.kts`,
+2. 根据需求创建catalog文件(`libs.versions.toml`)进行依赖包管理
+   - 在`gradle`目录下新建文件`libs.versions.toml`(当然可以按照喜好命名，反正可以配置)
+   - 在`settings.gradle.kts`文件中增加插件管理配置，如下：
+   ```kotlin
+   dependencyResolutionManagement {
+      repositories {
+          ***
+      }
+      versionCatalogs {
+          create("easy") {
+              from(files("./build-logic/building.versions.toml"))
+          }
+      }
+   }
+   ```
 
-- #### Option2
-Managed by local file
-1. In project `gradle` folder, create a catalog file named `libs.versions.toml`
-2. Copy content from `default.versions.toml` into your local file, and add the others that you want.
-> Note: You have to add default content from `default.versions.toml`, cause plugins need them.
+3. 同步项目并根据情况更改任何module中的`build.gradle.kts`文件
+   - 插件使用方式
+   ```kotlin
+    plugins {
+        alias(libs.plugins.android.application) apply false
+        alias(libs.plugins.kotlin-android) apply false
+    }
+    ```
+    ```kotlin
+    plugins {
+        id("easy.android.application")
+        id("easy.android.application.compose")
+        id("easy.android.application.jacoco")
+        id("jacoco")
+    }
+    ```
+    
+    - 依赖库使用方式
+    ```kotlin
+    dependencies {
+        implementation(libs.core.ktx)
+        implementation(libs.androidx.compose.activity)
+    }
+    ```    
 
-### Step 3
-Sync the project, and you can use it like below.<br>
-For example plugin:
-```kotlin
-plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin-android) apply false
-}   
-```
-```kotlin
-plugins {
-    id("easy.android.application")
-    id("easy.android.application.compose")
-    id("easy.android.application.jacoco")
-    id("jacoco")
-}
-```
-  
-For example dependencies:
-```kotlin
-dependencies {
-    implementation(libs.core.ktx)
-    implementation(libs.androidx.compose.activity)
-}   
-```
+## 例子参考
+一个简单的使用例子 [Example](https://github.com/BreakZero/Build-Logic-UsingExample)
 
-## Samples
-Here is a [Sample](https://github.com/BreakZero/Build-Logic-UsingExample)
+## 其他
+在Android Platform配置上，对应的`compileSdkVersion`、`targetSdkVersion`、`versionCode`等相关依然在本项目中，无法让主项目来管理。
+但是可以通过在module中进行覆盖配置。不建议如此，只需要在app module上进行对应的覆盖就好，对于`Library` module基本也不会考虑。
 
-## Plan 
-In fact, when we are in different project, we will use different libraries.<br>
-For example, in native Android project, Hilt is better than Koin for DI, but in
-KMP project, Koin will be better.<br>
-So plan to support multi type of `version catalog file` as several files.<br>
-Clean plugins
-
-## Refer
+## 参考
 [nowinandroid](https://github.com/android/nowinandroid)
