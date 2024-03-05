@@ -1,6 +1,8 @@
 ## 关于
 `Composing Build` + Version catalogs 作为Android推荐的包管理方式。
+
 该仓库就是参考`nowinandroid`提取出来的。提供了多种`Gradle Plugin`简化Android/Kotlin Multiplatform项目的Gradle 配置。
+
 作为submodule使用，可以大量减少配置文件，方便管理。
 
 ## 使用
@@ -56,6 +58,7 @@
 
 ## 其他
 在Android Platform配置上，对应的`compileSdkVersion`、`targetSdkVersion`、`versionCode`等相关依然在本项目中，无法让主项目来管理。
+
 但是可以通过在module中进行覆盖配置。不建议如此，只需要在app module上进行对应的覆盖就好，对于`Library` module基本也不会考虑。
 
 ## 参考
