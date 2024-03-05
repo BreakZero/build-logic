@@ -1,22 +1,21 @@
-## 关于
-`Composing Build` + Version catalogs 作为Android推荐的包管理方式。
+## About
+The way of Android Project package management, the commendation is `Composing Build` + Version catalogs.
 
-`Build Logic`通过参考`nowinandroid`加上个人开发经验提取整合出来的，可作为submodule使用，可以大量减少配置文件，方便管理。
+`Build Logic` is the production that Referring `nowinandroid` with my experience in Android Project. 
 
-通过插件的方式提供了多种相关依赖整合管理，亦可以通过组合插件来实现多样话配置，从而简化Android/Kotlin Multiplatform项目的Gradle配置模板代码。 对*modularization*项目更友好。 
+You can use it as submodule in your project that can reduce lot of your gradle configuration code.
 
-[介绍](https://www.dejinlu.com/posts/2023/09/27/ddd9439e/)
+Provides many plugins that category of feature/functional..., also can combine multi plugins for your module's variety.
 
-## 使用
-1. 作为submodule应用到项目中 
-    在已进行git初始化的项目下使用如下命令添加submodule
+## Usage
+1. Using as submodule in your project
+    in a git initialed project, run command line as below:
     ```shell
     git submodule add https://github.com/BreakZero/build-logic
     ```
-
-2. 根据需求创建catalog文件(`libs.versions.toml`)进行依赖包管理
-   - 在`gradle`目录下新建文件`libs.versions.toml`(当然可以按照喜好命名，反正可以配置)
-   - 在`settings.gradle.kts`文件中增加插件管理配置，如下：
+2. Creating version catalog file
+   - create a file named `libs.versions.toml` under *gradle* folder
+   - add `versionCatalogs` block configuration into *settings.gradle.kts* file within `dependencyResolutionManagement`
    ```kotlin
    dependencyResolutionManagement {
       repositories {
@@ -29,43 +28,45 @@
       }
    }
    ```
-   > 本项目提供一些常用的依赖包，请参考[catalogs](catalogs), 版本号之类的可能已经比较老，自行更新
+   > There are some common libraries provided in [catalogs](catalogs), version maybe older, update by yourself
 
-3. 同步项目并根据情况更改任何module中的`build.gradle.kts`文件
-   - 插件使用方式
+3. Sync project and using that you need
+   - Plugin usage
    ```kotlin
-    plugins {
-        alias(libs.plugins.android.application) apply false
-        alias(libs.plugins.kotlin-android) apply false
-    }
-    ```
-    ```kotlin
-    plugins {
-        id("easy.android.application")
-        id("easy.android.application.compose")
-        id("easy.android.application.jacoco")
-        id("jacoco")
-    }
-    ```
-    
-    - 依赖库使用方式
-    ```kotlin
-    dependencies {
+   plugins {
+       alias(libs.plugins.android.application) apply false
+       alias(libs.plugins.kotlin-android) apply false
+   }
+   ```
+   ```kotlin
+   plugins {
+       id("easy.android.application")
+       id("easy.android.application.compose")
+       id("easy.android.application.jacoco")
+       id("jacoco")
+   }
+   ```
+   - Dependencies usage
+   ```kotlin
+   dependencies {
         implementation(libs.core.ktx)
         implementation(libs.androidx.compose.activity)
-    }
-    ```    
+   }
+   ```
 
-## 例子参考
-一个简单的使用例子 [Example](https://github.com/BreakZero/Build-Logic-UsingExample)
+## Example
+Here is an [Example](https://github.com/BreakZero/Build-Logic-UsingExample)
 
-## 其他
-在Android Platform配置上，对应的`compileSdkVersion`、`targetSdkVersion`、`versionCode`等相关依然在本项目中，无法让主项目来管理。
+## Other 
+There are some config fields could not move to *Main Project* such as `compileSdkVersion`、`targetSdkVersion`、`versionCode`...
 
-但是可以通过在*module*中进行覆盖配置。不建议如此，只需要在app module上进行对应的覆盖就好，对于`Library` module基本也不会考虑。
+But you also can override it in *module* configuration file. 
 
-## 参考
+Actually, i don't recommend do in that way. In Android Project, we don't care about the `Library module` version code, so we 
+do not need manage it in specially. Just override in app module.
+
+## Referring
 [nowinandroid](https://github.com/android/nowinandroid)
 
-# README.md
-- English [README_EN.md](README_EN.md)
+## README.md
+- Chinese [README_CN.md](README_CN.md)
