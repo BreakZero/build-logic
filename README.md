@@ -14,15 +14,7 @@ git submodule add https://github.com/BreakZero/build-logic
 Creating version catalog
 - #### Option1 
 Using the default provided `default.versions.toml` in root folder.
-1. Open project `settings.gradle.kts`, 
-2. add below code into `dependencyResolutionManagement` block
-```kotlin
-versionCatalogs {
-    create("libs") {
-        from(files("./build-logic/default.versions.toml"))
-    }
-}
-```
+1. Open project `settings.gradle.kts`,
 
 - #### Option2
 Managed by local file
