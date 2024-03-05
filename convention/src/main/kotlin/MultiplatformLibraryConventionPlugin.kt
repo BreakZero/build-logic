@@ -38,7 +38,7 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<KotlinMultiplatformExtension> {
-//              jvmToolchain(17)
+
                 androidTarget {
                     compilations.all {
                         kotlinOptions {
@@ -49,30 +49,12 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
                 iosX64()
                 iosArm64()
                 iosSimulatorArm64()
+                applyDefaultHierarchyTemplate()
 
-                val commonMain = sourceSets.getByName("commonMain") {
+                sourceSets.getByName("commonMain") {
                     dependencies {
                         implementation(libs.findLibrary("koin.core").get())
                     }
-                }
-                val commonTest = sourceSets.getByName("commonTest")
-                val iosX64Main = sourceSets.getByName("iosX64Main")
-                val iosArm64Main = sourceSets.getByName("iosArm64Main")
-                val iosSimulatorArm64Main = sourceSets.getByName("iosSimulatorArm64Main")
-                sourceSets.create("iosMain") {
-                    dependsOn(commonMain)
-                    iosX64Main.dependsOn(this)
-                    iosArm64Main.dependsOn(this)
-                    iosSimulatorArm64Main.dependsOn(this)
-                }
-                val iosX64Test = sourceSets.getByName("iosX64Test")
-                val iosArm64Test = sourceSets.getByName("iosArm64Test")
-                val iosSimulatorArm64Test = sourceSets.getByName("iosSimulatorArm64Test")
-                sourceSets.create("iosTest") {
-                    dependsOn(commonTest)
-                    iosX64Test.dependsOn(this)
-                    iosArm64Test.dependsOn(this)
-                    iosSimulatorArm64Test.dependsOn(this)
                 }
 
                 (this as ExtensionAware).extensions.configure<CocoapodsExtension> {

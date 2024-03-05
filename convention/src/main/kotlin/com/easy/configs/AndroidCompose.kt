@@ -34,8 +34,14 @@ internal fun Project.configureAndroidCompose(
         }
 
         composeOptions {
-            kotlinCompilerExtensionVersion =
-                libs.findVersion("compose-compiler").get().toString()
+            libs.findVersion("compose-compiler").ifPresentOrElse(
+                {
+                    kotlinCompilerExtensionVersion = it.toString()
+                },
+                {
+                    kotlinCompilerExtensionVersion = "1.5.9"
+                }
+            )
         }
 
         buildFeatures {
@@ -43,17 +49,16 @@ internal fun Project.configureAndroidCompose(
         }
 
         dependencies {
-            val bom = libs.findLibrary("androidx-compose-bom").get()
-            val composeBundle = libs.findBundle("compose.android.bundle").get()
-            val testBundle = libs.findBundle("junit.test.bundle").get()
+            with(libs) {
+                findLibrary("androidx-compose-bom").ifPresent {
+                    add("implementation", platform(it))
+                    add("androidTestImplementation", platform(it))
+                }
+                findLibrary("androidx.compose.ui.tooling").ifPresent { add("debugImplementation", it) }
+                findLibrary("junit").ifPresent { add("testImplementation", it) }
 
-            add("implementation", platform(bom))
-            add("implementation", composeBundle)
-
-            add("debugImplementation", libs.findLibrary("androidx.compose.ui.tooling").get())
-            add("testImplementation", libs.findLibrary("junit").get())
-            add("testImplementation", testBundle)
-            add("androidTestImplementation", platform(bom))
+                findBundle("compose.android.bundle").ifPresent { add("implementation", it) }
+            }
         }
     }
 }

@@ -39,7 +39,9 @@ class AndroidFeatureWithKoinConventionPlugin : Plugin<Project> {
                 }
             }
             dependencies {
-                add("implementation", libs.findBundle("koin.android.bundle").get())
+                libs.findBundle("koin.android.bundle").ifPresent {
+                    add("implementation", it)
+                }
             }
         }
     }
