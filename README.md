@@ -1,9 +1,11 @@
 ## 关于
 `Composing Build` + Version catalogs 作为Android推荐的包管理方式。
 
-该仓库就是参考`nowinandroid`提取出来的。提供了多种`Gradle Plugin`简化Android/Kotlin Multiplatform项目的Gradle 配置。
+`Build Logic`通过参考`nowinandroid`提取出来的，可作为submodule使用，可以大量减少配置文件，方便管理。
 
-作为submodule使用，可以大量减少配置文件，方便管理。
+通过插件的方式提供了多种相关依赖整合管理，亦可以通过组合插件来实现多样话配置，从而简化Android/Kotlin Multiplatform项目的Gradle配置模板代码。 对*modularization*项目更友好。 
+
+[介绍](https://www.dejinlu.com/posts/2023/09/27/ddd9439e/)
 
 ## 使用
 1. 作为submodule应用到项目中 
