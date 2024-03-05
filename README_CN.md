@@ -62,7 +62,7 @@
 ## 其他
 在Android Platform配置上，对应的`compileSdkVersion`、`targetSdkVersion`、`versionCode`等相关依然在本项目中，无法让主项目来管理。
 
-但是可以通过在*module*中进行覆盖配置。不建议如此，只需要在app module上进行对应的覆盖就好，对于`Library` module基本也不会考虑。
+但是可以通过在**module**中进行覆盖配置。不建议如此，只需要在app module上进行对应的覆盖就好，对于`Library` module基本也不会考虑。
 
 ## 参考
 [nowinandroid](https://github.com/android/nowinandroid)

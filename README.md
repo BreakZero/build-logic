@@ -14,8 +14,8 @@ Provides many plugins that category of feature/functional..., also can combine m
     git submodule add https://github.com/BreakZero/build-logic
     ```
 2. Creating version catalog file
-   - create a file named `libs.versions.toml` under *gradle* folder
-   - add `versionCatalogs` block configuration into *settings.gradle.kts* file within `dependencyResolutionManagement`
+   - create a file named `libs.versions.toml` under **gradle** folder
+   - add `versionCatalogs` block configuration into **settings.gradle.kts** file within `dependencyResolutionManagement`
    ```kotlin
    dependencyResolutionManagement {
       repositories {
@@ -58,9 +58,9 @@ Provides many plugins that category of feature/functional..., also can combine m
 Here is an [Example](https://github.com/BreakZero/Build-Logic-UsingExample)
 
 ## Other 
-There are some config fields could not move to *Main Project* such as `compileSdkVersion`、`targetSdkVersion`、`versionCode`...
+There are some config fields could not move to **Main Project** such as `compileSdkVersion`、`targetSdkVersion`、`versionCode`...
 
-But you also can override it in *module* configuration file. 
+But you also can override it in **module** configuration file. 
 
 Actually, i don't recommend do in that way. In Android Project, we don't care about the `Library module` version code, so we 
 do not need manage it in specially. Just override in app module.
