@@ -57,7 +57,7 @@ internal fun Project.configureAndroidCompose(
                 findLibrary("androidx.compose.ui.tooling").ifPresent { add("debugImplementation", it) }
                 findLibrary("junit").ifPresent { add("testImplementation", it) }
 
-                findBundle("").ifPresent { add("implementation", it) }
+                findBundle("compose.android.bundle").ifPresent { add("implementation", it) }
             }
         }
     }
