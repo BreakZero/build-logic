@@ -1,7 +1,7 @@
 ## 关于
 `Composing Build` + Version catalogs 作为Android推荐的包管理方式。
 
-`Build Logic`通过参考`nowinandroid`提取出来的，可作为submodule使用，可以大量减少配置文件，方便管理。
+`Build Logic`通过参考`nowinandroid`加上个人开发经验提取整合出来的，可作为submodule使用，可以大量减少配置文件，方便管理。
 
 通过插件的方式提供了多种相关依赖整合管理，亦可以通过组合插件来实现多样话配置，从而简化Android/Kotlin Multiplatform项目的Gradle配置模板代码。 对*modularization*项目更友好。 
 
@@ -29,6 +29,7 @@
       }
    }
    ```
+   > 本项目提供一些常用的依赖包，请参考[catalogs](catalogs), 版本号之类的可能已经比较老，自行更新
 
 3. 同步项目并根据情况更改任何module中的`build.gradle.kts`文件
    - 插件使用方式
@@ -61,7 +62,10 @@
 ## 其他
 在Android Platform配置上，对应的`compileSdkVersion`、`targetSdkVersion`、`versionCode`等相关依然在本项目中，无法让主项目来管理。
 
-但是可以通过在module中进行覆盖配置。不建议如此，只需要在app module上进行对应的覆盖就好，对于`Library` module基本也不会考虑。
+但是可以通过在*module*中进行覆盖配置。不建议如此，只需要在app module上进行对应的覆盖就好，对于`Library` module基本也不会考虑。
 
 ## 参考
 [nowinandroid](https://github.com/android/nowinandroid)
+
+# README.md
+- English [README_EN.md](README_EN.md)

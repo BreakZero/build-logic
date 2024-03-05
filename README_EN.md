@@ -1,62 +1,72 @@
 ## About
-By now, in android project the commendation is using `Composing builds` and managing the libs version in a version catalog file.
-so this repository is for that.
-Using it as a submodule, will reduce almost 80% gradle config in your project.
+The way of Android Project package management, the commendation is `Composing Build` + Version catalogs.
 
-## How To Use
-### Step 1
-  Using as submodule in your project with git command.
-```shell
-git submodule add https://github.com/BreakZero/build-logic
-```
+`Build Logic` is the production that Referring `nowinandroid` with my experience in Android Project. 
 
-### Step 2
-Creating version catalog
-- #### Option1 
-Using the default provided `default.versions.toml` in root folder.
-1. Open project `settings.gradle.kts`,
+You can use it as submodule in your project that can reduce lot of your gradle configuration code.
 
-- #### Option2
-Managed by local file
-1. In project `gradle` folder, create a catalog file named `libs.versions.toml`
-2. Copy content from `default.versions.toml` into your local file, and add the others that you want.
-> Note: You have to add default content from `default.versions.toml`, cause plugins need them.
+Provides many plugins that category of feature/functional..., also can combine multi plugins for your module's variety.
 
-### Step 3
-Sync the project, and you can use it like below.<br>
-For example plugin:
-```kotlin
-plugins {
-    alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin-android) apply false
-}   
-```
-```kotlin
-plugins {
-    id("easy.android.application")
-    id("easy.android.application.compose")
-    id("easy.android.application.jacoco")
-    id("jacoco")
-}
-```
-  
-For example dependencies:
-```kotlin
-dependencies {
-    implementation(libs.core.ktx)
-    implementation(libs.androidx.compose.activity)
-}   
-```
+## Usage
+1. Using as submodule in your project
+    in a git initialed project, run command line as below:
+    ```shell
+    git submodule add https://github.com/BreakZero/build-logic
+    ```
+2. Creating version catalog file
+   - create a file named `libs.versions.toml` under *gradle* folder
+   - add `versionCatalogs` block configuration into *settings.gradle.kts* file within `dependencyResolutionManagement`
+   ```kotlin
+   dependencyResolutionManagement {
+      repositories {
+          ***
+      }
+      versionCatalogs {
+          create("easy") {
+              from(files("./build-logic/building.versions.toml"))
+          }
+      }
+   }
+   ```
+   > There are some common libraries provided in [catalogs](catalogs), version maybe older, update by yourself
 
-## Samples
-Here is a [Sample](https://github.com/BreakZero/Build-Logic-UsingExample)
+3. Sync project and using that you need
+   - Plugin usage
+   ```kotlin
+   plugins {
+       alias(libs.plugins.android.application) apply false
+       alias(libs.plugins.kotlin-android) apply false
+   }
+   ```
+   ```kotlin
+   plugins {
+       id("easy.android.application")
+       id("easy.android.application.compose")
+       id("easy.android.application.jacoco")
+       id("jacoco")
+   }
+   ```
+   - Dependencies usage
+   ```kotlin
+   dependencies {
+        implementation(libs.core.ktx)
+        implementation(libs.androidx.compose.activity)
+   }
+   ```
 
-## Plan 
-In fact, when we are in different project, we will use different libraries.<br>
-For example, in native Android project, Hilt is better than Koin for DI, but in
-KMP project, Koin will be better.<br>
-So plan to support multi type of `version catalog file` as several files.<br>
-Clean plugins
+## Example
+Here is an [Example](https://github.com/BreakZero/Build-Logic-UsingExample)
 
-## Refer
+## Other 
+There are some config fields could not move to *Main Project* such as `compileSdkVersion`、`targetSdkVersion`、`versionCode`...
+
+But you also can override it in *module* configuration file. 
+
+Actually, i don't recommend do in that way. In Android Project, we don't care about the `Library module` version code, so we 
+do not need manage it in specially. Just override in app module.
+
+## Referring
 [nowinandroid](https://github.com/android/nowinandroid)
+
+# README.md
+- Chinese [README.md](README.md)
