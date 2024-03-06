@@ -59,7 +59,7 @@ Provides many plugins that category of feature/functional..., also can combine m
 ## Example
 Here is an [Example](https://github.com/BreakZero/Build-Logic-UsingExample)
 
-## Other 
+## Others
 There are some config fields could not move to **Main Project** such as `compileSdkVersion`、`targetSdkVersion`、`versionCode`...
 
 But you also can override it in **module** configuration file. 
