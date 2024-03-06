@@ -29,7 +29,9 @@
       }
    }
    ```
-   > 本项目提供一些常用的依赖包，请参考[catalogs](catalogs), 版本号之类的可能已经比较老，自行更新
+   > Note: 也可以不需要这个配置，直接使用正确的plugin id便可正常使用。id 可从这里[building.versions.toml](building.versions.toml)拷贝
+   > 
+   > 另外本项目提供一些常用的依赖包，请参考[catalogs](catalogs), 版本号之类的可能已经比较老，自行更新
 
 3. 同步项目并根据情况更改任何module中的`build.gradle.kts`文件
    - 插件使用方式

@@ -28,6 +28,8 @@ Provides many plugins that category of feature/functional..., also can combine m
       }
    }
    ```
+   > Note: You also can use plugin id directly without doing this step. Plugin id see [building.versions.toml](building.versions.toml)
+   > 
    > There are some common libraries provided in [catalogs](catalogs), version maybe older, update by yourself
 
 3. Sync project and using that you need
