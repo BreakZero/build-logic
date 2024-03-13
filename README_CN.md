@@ -36,19 +36,19 @@
 3. 同步项目并根据情况更改任何module中的`build.gradle.kts`文件
    - 插件使用方式
    ```kotlin
-    plugins {
-        alias(libs.plugins.android.application) apply false
-        alias(libs.plugins.kotlin-android) apply false
-    }
-    ```
-    ```kotlin
-    plugins {
-        id("easy.android.application")
-        id("easy.android.application.compose")
-        id("easy.android.application.jacoco")
-        id("jacoco")
-    }
-    ```
+   plugins {
+       alias(libs.plugins.android.application) apply false
+       alias(libs.plugins.android.library) apply false
+       alias(libs.plugins.kotlin.android) apply false
+   }
+   ```
+   ```kotlin
+   plugins {
+       id("org.easy.android.application.compose")
+       id("org.easy.jacoco")
+       id("org.easy.hilt")
+   }
+   ```
     
     - 依赖库使用方式
     ```kotlin
