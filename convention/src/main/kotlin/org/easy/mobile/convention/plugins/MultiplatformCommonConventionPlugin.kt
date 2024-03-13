@@ -59,8 +59,8 @@ class MultiplatformCommonConventionPlugin : Plugin<Project> {
 
                 (this as ExtensionAware).extensions.configure<CocoapodsExtension> {
                     // TODO change to your information
-                    summary = ""
-                    homepage = ""
+                    summary = "replace to your feature summary"
+                    homepage = "https://mock.com"
                     authors = ""
                     version = "1.0"
                     ios.deploymentTarget = "16.0"
