@@ -40,7 +40,7 @@ gradlePlugin {
     }
 
     plugins.register("org-easy-library-compose") {
-        id = easy.plugins.compose.library.get().pluginId
+        id = easy.plugins.android.compose.library.get().pluginId
         implementationClass = "org.easy.mobile.convention.plugins.ComposeLibraryConventionPlugin"
     }
     plugins.register("org-easy-hilt") {
@@ -64,7 +64,7 @@ gradlePlugin {
         implementationClass = "org.easy.mobile.convention.plugins.NormalAppConventionPlugin"
     }
     plugins.register("org-easy-library") {
-        id = easy.plugins.library.get().pluginId
+        id = easy.plugins.android.library.get().pluginId
         implementationClass = "org.easy.mobile.convention.plugins.NormalLibraryConventionPlugin"
     }
 }
