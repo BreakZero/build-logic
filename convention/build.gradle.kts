@@ -30,41 +30,41 @@ dependencies {
 
 gradlePlugin {
     plugins.register("org-easy-android-test") {
-        id = easy.plugins.easy.android.test.get().pluginId
+        id = easy.plugins.android.test.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.AndroidTestConventionPlugin"
     }
 
     plugins.register("org-easy-application-compose") {
-        id = easy.plugins.easy.compose.application.get().pluginId
+        id = easy.plugins.compose.application.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.ComposeAppConventionPlugin"
     }
 
     plugins.register("org-easy-library-compose") {
-        id = easy.plugins.easy.compose.library.get().pluginId
+        id = easy.plugins.compose.library.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.ComposeLibraryConventionPlugin"
     }
     plugins.register("org-easy-hilt") {
-        id = easy.plugins.easy.hilt.get().pluginId
+        id = easy.plugins.hilt.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.HiltConventionPlugin"
     }
     plugins.register("org-easy-jacoco") {
-        id = easy.plugins.easy.jacoco.get().pluginId
+        id = easy.plugins.jacoco.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.JacocoConventionPlugin"
     }
     plugins.register("org-easy-koin") {
-        id = easy.plugins.easy.koin.get().pluginId
+        id = easy.plugins.koin.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.KoinConventionPlugin"
     }
     plugins.register("org-easy-multiplatform") {
-        id = easy.plugins.easy.multiplatform.get().pluginId
+        id = easy.plugins.multiplatform.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.MultiplatformCommonConventionPlugin"
     }
     plugins.register("org-easy-application") {
-        id = easy.plugins.easy.application.get().pluginId
+        id = easy.plugins.application.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.NormalAppConventionPlugin"
     }
     plugins.register("org-easy-library") {
-        id = easy.plugins.easy.library.get().pluginId
+        id = easy.plugins.library.get().pluginId
         implementationClass = "org.easy.android.convention.plugins.NormalLibraryConventionPlugin"
     }
 }
