@@ -1,7 +1,10 @@
+package org.easy.mobile.convention.plugins
+
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
-import com.easy.configs.configurePrintApksTask
-import com.easy.configs.libs
+import org.easy.mobile.convention.AndroidBuildConfig
+import org.easy.mobile.convention.libs
+import org.easy.mobile.convention.printTestTask
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -11,7 +14,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.cocoapods.CocoapodsExtension
 import org.jetbrains.kotlin.gradle.plugin.mpp.BitcodeEmbeddingMode
 
-class MultiplatformLibraryConventionPlugin : Plugin<Project> {
+class MultiplatformCommonConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
@@ -33,12 +36,9 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
                     abortOnError = false
                 }
             }
-            extensions.configure<LibraryAndroidComponentsExtension> {
-                configurePrintApksTask(this)
-            }
+            extensions.configure<LibraryAndroidComponentsExtension>(::printTestTask)
 
             extensions.configure<KotlinMultiplatformExtension> {
-
                 androidTarget {
                     compilations.all {
                         kotlinOptions {
@@ -59,9 +59,9 @@ class MultiplatformLibraryConventionPlugin : Plugin<Project> {
 
                 (this as ExtensionAware).extensions.configure<CocoapodsExtension> {
                     // TODO change to your information
-                    summary = "cocoapod submodule"
-                    homepage = "dejinlu.com"
-                    authors = "Dougie"
+                    summary = "replace to your feature summary"
+                    homepage = "https://mock.com"
+                    authors = ""
                     version = "1.0"
                     ios.deploymentTarget = "16.0"
                     framework {

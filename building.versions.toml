@@ -1,6 +1,5 @@
 [versions]
-version = "1.0.0"
-org-jetbrains-kotlin = "1.9.20"
+org-jetbrains-kotlin = "1.9.22"
 android-gradle-plugin = "8.1.1"
 
 [libraries]
@@ -9,15 +8,12 @@ android-tools-build = { group = "com.android.tools.build", name = "gradle", vers
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
 
 [plugins]
-android-application = { id = "easy.android.application", version.ref = "version" }
-android-application-compose = { id = "easy.android.application.compose", version.ref = "version" }
-android-application-jacoco = { id = "easy.android.application.jacoco", version.ref = "version" }
-android-library = { id = "easy.android.library", version.ref = "version" }
-android-library-compose = { id = "easy.android.library.compose", version.ref = "version" }
-android-library-jacoco = { id = "easy.android.library.jacoco", version.ref = "version" }
-multiplatform-library = { id = "easy.multiplatform.library", version.ref = "version" }
-android-feature-koin = { id = "easy.android.feature.koin", version.ref = "version" }
-android-feature-hilt = { id = "easy.android.feature.hilt", version.ref = "version" }
-android-test = { id = "easy.android.test", version.ref = "version" }
-android-hilt = { id = "easy.android.hilt", version.ref = "version" }
-firebase-perf = { id = "easy.firebase-perf", version.ref = "version" }
+android-test = { id = "org.easy.android.test" }
+application = { id = "org.easy.android.application" }
+compose-application = { id = "org.easy.android.application.compose" }
+android-library = { id = "org.easy.android.library" }
+android-compose-library = { id = "org.easy.android.library.compose" }
+hilt = { id = "org.easy.hilt"}
+jacoco = { id = "org.easy.jacoco" }
+koin = { id = "org.easy.koin" }
+multiplatform = { id = "org.easy.multiplatform" }

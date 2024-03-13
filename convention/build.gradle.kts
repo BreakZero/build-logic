@@ -18,8 +18,6 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.easy.plugin.buildlogic"
-
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
@@ -31,55 +29,42 @@ dependencies {
 }
 
 gradlePlugin {
-    version = easy.versions.version
-    plugins {
-        register("androidApplicationCompose") {
-            id = easy.plugins.android.application.compose.get().pluginId
-            implementationClass = "AndroidApplicationComposeConventionPlugin"
-        }
-        register("androidApplication") {
-            id = easy.plugins.android.application.asProvider().get().pluginId
-            implementationClass = "AndroidApplicationConventionPlugin"
-        }
-        register("androidApplicationJacoco") {
-            id = easy.plugins.android.application.jacoco.get().pluginId
-            implementationClass = "AndroidApplicationJacocoConventionPlugin"
-        }
-        register("androidLibraryCompose") {
-            id = easy.plugins.android.library.compose.get().pluginId
-            implementationClass = "AndroidLibraryComposeConventionPlugin"
-        }
-        register("androidLibrary") {
-            id = easy.plugins.android.library.asProvider().get().pluginId
-            implementationClass = "AndroidLibraryConventionPlugin"
-        }
-        register("multiplatformLibrary") {
-            id = easy.plugins.multiplatform.library.get().pluginId
-            implementationClass = "MultiplatformLibraryConventionPlugin"
-        }
-        register("androidFeatureKoin") {
-            id = easy.plugins.android.feature.koin.get().pluginId
-            implementationClass = "AndroidFeatureWithKoinConventionPlugin"
-        }
-        register("androidFeatureHilt") {
-            id = easy.plugins.android.feature.hilt.get().pluginId
-            implementationClass = "AndroidFeatureWithHiltConventionPlugin"
-        }
-        register("androidLibraryJacoco") {
-            id = easy.plugins.android.library.jacoco.get().pluginId
-            implementationClass = "AndroidLibraryJacocoConventionPlugin"
-        }
-        register("androidTest") {
-            id = easy.plugins.android.test.get().pluginId
-            implementationClass = "AndroidTestConventionPlugin"
-        }
-        register("androidHilt") {
-            id = easy.plugins.android.hilt.get().pluginId
-            implementationClass = "AndroidHiltConventionPlugin"
-        }
-        register("firebase-perf") {
-            id = easy.plugins.firebase.perf.get().pluginId
-            implementationClass = "FirebasePerfConventionPlugin"
-        }
+    plugins.register("org-easy-android-test") {
+        id = easy.plugins.android.test.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.AndroidTestConventionPlugin"
+    }
+
+    plugins.register("org-easy-application-compose") {
+        id = easy.plugins.compose.application.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.ComposeAppConventionPlugin"
+    }
+
+    plugins.register("org-easy-library-compose") {
+        id = easy.plugins.android.compose.library.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.ComposeLibraryConventionPlugin"
+    }
+    plugins.register("org-easy-hilt") {
+        id = easy.plugins.hilt.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.HiltConventionPlugin"
+    }
+    plugins.register("org-easy-jacoco") {
+        id = easy.plugins.jacoco.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.JacocoConventionPlugin"
+    }
+    plugins.register("org-easy-koin") {
+        id = easy.plugins.koin.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.KoinConventionPlugin"
+    }
+    plugins.register("org-easy-multiplatform") {
+        id = easy.plugins.multiplatform.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.MultiplatformCommonConventionPlugin"
+    }
+    plugins.register("org-easy-application") {
+        id = easy.plugins.application.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.NormalAppConventionPlugin"
+    }
+    plugins.register("org-easy-library") {
+        id = easy.plugins.android.library.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.NormalLibraryConventionPlugin"
     }
 }

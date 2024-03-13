@@ -37,15 +37,15 @@ Provides many plugins that category of feature/functional..., also can combine m
    ```kotlin
    plugins {
        alias(libs.plugins.android.application) apply false
-       alias(libs.plugins.kotlin-android) apply false
+       alias(libs.plugins.android.library) apply false
+       alias(libs.plugins.kotlin.android) apply false
    }
    ```
    ```kotlin
    plugins {
-       id("easy.android.application")
-       id("easy.android.application.compose")
-       id("easy.android.application.jacoco")
-       id("jacoco")
+       id("org.easy.android.application.compose")
+       id("org.easy.jacoco")
+       id("org.easy.hilt")
    }
    ```
    - Dependencies usage

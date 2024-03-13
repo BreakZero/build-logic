@@ -1,4 +1,4 @@
-package com.easy.configs
+package org.easy.mobile.convention
 
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.ApplicationProductFlavor
