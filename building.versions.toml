@@ -11,8 +11,8 @@ kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-p
 android-test = { id = "org.easy.android.test" }
 application = { id = "org.easy.android.application" }
 compose-application = { id = "org.easy.android.application.compose" }
-library = { id = "org.easy.android.library" }
-compose-library = { id = "org.easy.android.library.compose" }
+android-library = { id = "org.easy.android.library" }
+android-compose-library = { id = "org.easy.android.library.compose" }
 hilt = { id = "org.easy.hilt"}
 jacoco = { id = "org.easy.jacoco" }
 koin = { id = "org.easy.koin" }
