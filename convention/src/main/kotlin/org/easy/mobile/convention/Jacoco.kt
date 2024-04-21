@@ -16,7 +16,11 @@ private val coverageExclusions = listOf(
     "**/R.class",
     "**/R\$*.class",
     "**/BuildConfig.*",
-    "**/Manifest*.*"
+    "**/Manifest*.*",
+    "**/*_Hilt*.class",
+    "**/Hilt_*.class",
+    "**.*\$\$serializer",
+    "**.*\$\$Companion"
 )
 
 private fun String.upperCaseFirstChar(): String {
