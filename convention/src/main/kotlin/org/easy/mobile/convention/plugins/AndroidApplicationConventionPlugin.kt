@@ -22,7 +22,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 defaultConfig.targetSdk = AndroidBuildConfig.targetSdkVersion
                 @Suppress("UnstableApiUsage")
                 testOptions.animationsDisabled = true
-                configureFlavors(this)
             }
         }
     }

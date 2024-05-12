@@ -13,7 +13,6 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
             pluginManager.apply("com.android.library")
 
             val extension = extensions.getByType<LibraryExtension>()
-            configureFlavors(extension)
             configureAndroidCompose(extension)
         }
     }
