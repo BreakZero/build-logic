@@ -15,6 +15,8 @@ internal fun Project.configureAndroidCompose(
 ) {
     commonExtension.apply {
         compileSdk = AndroidBuildConfig.compileSdkVersion
+        defaultConfig.minSdk = AndroidBuildConfig.minSdkVersion
+
         composeOptions {
             libs.findVersion("compose-compiler").ifPresentOrElse(
                 {

@@ -2,6 +2,7 @@ package org.easy.mobile.convention.plugins
 
 import com.android.build.api.dsl.ApplicationExtension
 import org.easy.mobile.convention.AndroidBuildConfig
+import org.easy.mobile.convention.configureFlavors
 import org.easy.mobile.convention.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -21,6 +22,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 defaultConfig.targetSdk = AndroidBuildConfig.targetSdkVersion
                 @Suppress("UnstableApiUsage")
                 testOptions.animationsDisabled = true
+                configureFlavors(this)
             }
         }
     }
