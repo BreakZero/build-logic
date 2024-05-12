@@ -35,7 +35,7 @@ gradlePlugin {
     }
     plugins.register("androidApplicationCompose") {
         id = "easy.android.application.compose"
-        implementationClass = "org.easy.mobile.convention.plugins.AndroidLibraryComposeConventionPlugin"
+        implementationClass = "org.easy.mobile.convention.plugins.AndroidApplicationComposeConventionPlugin"
     }
     plugins.register("androidLibrary") {
         id = "easy.android.library"
