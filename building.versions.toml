@@ -1,6 +1,6 @@
 [versions]
-org-jetbrains-kotlin = "1.9.22"
-android-gradle-plugin = "8.1.1"
+org-jetbrains-kotlin = "1.9.23"
+android-gradle-plugin = "8.4.0"
 
 [libraries]
 # Dependencies of the included build-logic
@@ -17,3 +17,4 @@ hilt = { id = "org.easy.hilt"}
 jacoco = { id = "org.easy.jacoco" }
 koin = { id = "org.easy.koin" }
 multiplatform = { id = "org.easy.multiplatform" }
+android-lint = { id = "org.easy.lint" }

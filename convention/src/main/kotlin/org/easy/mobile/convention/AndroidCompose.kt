@@ -4,19 +4,18 @@ package org.easy.mobile.convention
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.File
 
 /**
  * Configure Compose-specific options
  */
 internal fun Project.configureAndroidCompose(
-    commonExtension: CommonExtension<*, *, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
     commonExtension.apply {
         configureKotlinAndroid(this)
-        kotlinOptions {
-            freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
-        }
 
         composeOptions {
             libs.findVersion("compose-compiler").ifPresentOrElse(
@@ -45,6 +44,21 @@ internal fun Project.configureAndroidCompose(
                 findBundle("compose.android.bundle").ifPresent { add("implementation", it) }
             }
         }
+
+        testOptions {
+            unitTests {
+                // For Robolectric
+                isIncludeAndroidResources = true
+            }
+        }
+    }
+
+    tasks.withType<KotlinCompile>().configureEach {
+        kotlinOptions {
+            freeCompilerArgs += buildComposeMetricsParameters()
+            freeCompilerArgs += stabilityConfiguration()
+            freeCompilerArgs += strongSkippingConfiguration()
+        }
     }
 }
 
@@ -71,3 +85,13 @@ private fun Project.buildComposeMetricsParameters(): List<String> {
     }
     return metricParameters.toList()
 }
+
+private fun Project.stabilityConfiguration() = listOf(
+    "-P",
+    "plugin:androidx.compose.compiler.plugins.kotlin:stabilityConfigurationPath=${project.rootDir.absolutePath}/compose_compiler_config.conf",
+)
+
+private fun Project.strongSkippingConfiguration() = listOf(
+    "-P",
+    "plugin:androidx.compose.compiler.plugins.kotlin:experimentalStrongSkipping=true",
+)

@@ -1,10 +1,9 @@
 package org.easy.mobile.convention.plugins
 
-import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import org.easy.mobile.convention.AndroidBuildConfig
+import org.easy.mobile.convention.configureKotlinAndroid
 import org.easy.mobile.convention.libs
-import org.easy.mobile.convention.printTestTask
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -24,19 +23,10 @@ class MultiplatformCommonConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_17
-                    targetCompatibility = JavaVersion.VERSION_17
-                }
-                compileSdk = AndroidBuildConfig.compileSdkVersion
-                defaultConfig {
-                    minSdk = AndroidBuildConfig.minSdkVersion
-                }
-                lint {
-                    abortOnError = false
-                }
+                configureKotlinAndroid(this)
+                defaultConfig.targetSdk = AndroidBuildConfig.targetSdkVersion
+                testOptions.animationsDisabled = true
             }
-            extensions.configure<LibraryAndroidComponentsExtension>(::printTestTask)
 
             extensions.configure<KotlinMultiplatformExtension> {
                 androidTarget {

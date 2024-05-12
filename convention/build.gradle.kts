@@ -36,12 +36,12 @@ gradlePlugin {
 
     plugins.register("org-easy-application-compose") {
         id = easy.plugins.compose.application.get().pluginId
-        implementationClass = "org.easy.mobile.convention.plugins.ComposeAppConventionPlugin"
+        implementationClass = "org.easy.mobile.convention.plugins.AndroidApplicationComposeConventionPlugin"
     }
 
     plugins.register("org-easy-library-compose") {
         id = easy.plugins.android.compose.library.get().pluginId
-        implementationClass = "org.easy.mobile.convention.plugins.ComposeLibraryConventionPlugin"
+        implementationClass = "org.easy.mobile.convention.plugins.AndroidLibraryComposeConventionPlugin"
     }
     plugins.register("org-easy-hilt") {
         id = easy.plugins.hilt.get().pluginId
@@ -61,10 +61,15 @@ gradlePlugin {
     }
     plugins.register("org-easy-application") {
         id = easy.plugins.application.get().pluginId
-        implementationClass = "org.easy.mobile.convention.plugins.NormalAppConventionPlugin"
+        implementationClass = "org.easy.mobile.convention.plugins.AndroidApplicationConventionPlugin"
     }
     plugins.register("org-easy-library") {
         id = easy.plugins.android.library.get().pluginId
-        implementationClass = "org.easy.mobile.convention.plugins.NormalLibraryConventionPlugin"
+        implementationClass = "org.easy.mobile.convention.plugins.AndroidLibraryConventionPlugin"
+    }
+
+    plugins.register("org-easy-lint") {
+        id = easy.plugins.android.lint.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.AndroidLintConventionPlugin"
     }
 }

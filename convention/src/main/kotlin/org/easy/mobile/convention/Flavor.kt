@@ -3,10 +3,11 @@ package org.easy.mobile.convention
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.ApplicationProductFlavor
 import com.android.build.api.dsl.CommonExtension
+import com.android.build.api.dsl.ProductFlavor
 import org.gradle.api.Project
 
 enum class FlavorDimension {
-    Environment, ContentType
+    Environment
 }
 
 enum class Flavor(val dimension: FlavorDimension, val applicationIdSuffix: String? = null) {
@@ -15,7 +16,8 @@ enum class Flavor(val dimension: FlavorDimension, val applicationIdSuffix: Strin
 }
 
 fun Project.configureFlavors(
-    commonExtension: CommonExtension<*, *, *, *, *>
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
+    flavorConfigurationBlock: ProductFlavor.(flavor: Flavor) -> Unit = {}
 ) {
     commonExtension.apply {
         flavorDimensions += FlavorDimension.Environment.name
@@ -23,9 +25,10 @@ fun Project.configureFlavors(
             Flavor.values().forEach {
                 create(it.name) {
                     dimension = it.dimension.name
+                    flavorConfigurationBlock(this, it)
                     if (this@apply is ApplicationExtension && this is ApplicationProductFlavor) {
                         if (it.applicationIdSuffix != null) {
-                            this.applicationIdSuffix = it.applicationIdSuffix
+                            applicationIdSuffix = it.applicationIdSuffix
                         }
                     }
                 }
