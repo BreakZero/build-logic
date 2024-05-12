@@ -72,4 +72,9 @@ gradlePlugin {
         id = easy.plugins.android.lint.get().pluginId
         implementationClass = "org.easy.mobile.convention.plugins.AndroidLintConventionPlugin"
     }
+
+    plugins.register("org-easy-jvm") {
+        id = easy.plugins.jvm.get().pluginId
+        implementationClass = "org.easy.mobile.convention.plugins.JvmLibraryConventionPlugin"
+    }
 }

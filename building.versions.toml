@@ -18,3 +18,4 @@ jacoco = { id = "org.easy.jacoco" }
 koin = { id = "org.easy.koin" }
 multiplatform = { id = "org.easy.multiplatform" }
 android-lint = { id = "org.easy.lint" }
+jvm = { id = "org.easy.jvm.library" }
