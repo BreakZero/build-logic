@@ -8,14 +8,14 @@ android-tools-build = { group = "com.android.tools.build", name = "gradle", vers
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
 
 [plugins]
-android-test = { id = "org.easy.android.test" }
-application = { id = "org.easy.android.application" }
-compose-application = { id = "org.easy.android.application.compose" }
-android-library = { id = "org.easy.android.library" }
-android-compose-library = { id = "org.easy.android.library.compose" }
-hilt = { id = "org.easy.hilt"}
-jacoco = { id = "org.easy.jacoco" }
-koin = { id = "org.easy.koin" }
-multiplatform = { id = "org.easy.multiplatform" }
-android-lint = { id = "org.easy.lint" }
-jvm = { id = "org.easy.jvm.library" }
+android-application = { id = "easy.android.application" }
+android-application-compose = { id = "easy.android.application.compose" }
+android-library = { id = "easy.android.library" }
+android-library-compose = { id = "easy.android.library.compose" }
+android-test = { id = "easy.android.test" }
+android-hilt = { id = "easy.android.hilt"}
+android-jacoco = { id = "easy.android.jacoco" }
+android-koin = { id = "easy.android.koin" }
+android-lint = { id = "easy.android.lint" }
+library-jvm = { id = "easy.library.jvm" }
+library-multiplatform = { id = "easy.library.multiplatform" }

@@ -2,6 +2,7 @@ package org.easy.mobile.convention.plugins
 
 import com.android.build.gradle.LibraryExtension
 import org.easy.mobile.convention.AndroidBuildConfig
+import org.easy.mobile.convention.configureAndroidCompose
 import org.easy.mobile.convention.configureKotlinAndroid
 import org.easy.mobile.convention.libs
 import org.gradle.api.JavaVersion
@@ -23,7 +24,7 @@ class MultiplatformCommonConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                configureKotlinAndroid(this)
+                configureAndroidCompose(this)
                 defaultConfig.targetSdk = AndroidBuildConfig.targetSdkVersion
                 testOptions.animationsDisabled = true
             }
