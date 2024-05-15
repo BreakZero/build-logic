@@ -2,10 +2,8 @@ package org.easy.mobile.convention.plugins
 
 import com.android.build.gradle.LibraryExtension
 import org.easy.mobile.convention.AndroidBuildConfig
-import org.easy.mobile.convention.configureAndroidCompose
 import org.easy.mobile.convention.configureKotlinAndroid
 import org.easy.mobile.convention.libs
-import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
@@ -24,43 +22,46 @@ class MultiplatformCommonConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                configureAndroidCompose(this)
+                configureKotlinAndroid(this)
                 defaultConfig.targetSdk = AndroidBuildConfig.targetSdkVersion
                 testOptions.animationsDisabled = true
             }
 
             extensions.configure<KotlinMultiplatformExtension> {
-                androidTarget {
-                    compilations.all {
-                        kotlinOptions {
-                            jvmTarget = JavaVersion.VERSION_17.toString()
-                        }
-                    }
-                }
+                androidTarget()
+
                 iosX64()
                 iosArm64()
                 iosSimulatorArm64()
                 applyDefaultHierarchyTemplate()
 
-                sourceSets.getByName("commonMain") {
+                sourceSets.commonMain {
                     dependencies {
-                        implementation(libs.findLibrary("koin.core").get())
+                        libs.findLibrary("koin.core").ifPresent {
+                            implementation(it)
+                        }
                     }
                 }
 
                 (this as ExtensionAware).extensions.configure<CocoapodsExtension> {
-                    // TODO change to your information
-                    summary = "replace to your feature summary"
-                    homepage = "https://mock.com"
-                    authors = ""
-                    version = "1.0"
-                    ios.deploymentTarget = "16.0"
-                    framework {
-                        baseName = project.name
-                        embedBitcode(BitcodeEmbeddingMode.BITCODE)
-                    }
+                    configureKotlinCocoapods(this)
                 }
             }
         }
+    }
+}
+
+internal fun Project.configureKotlinCocoapods(
+    extension: CocoapodsExtension
+) = extension.apply {
+    val moduleName = this@configureKotlinCocoapods.path.split(":").drop(1).joinToString("-")
+    summary = "Some description for the Shared Module" // TODO replace to your feature summary
+    homepage = "Link to the Shared Module homepage"
+    version = "1.0"
+    ios.deploymentTarget = "16.0" //your iOS deployment target
+    name = moduleName
+    framework {
+        baseName = moduleName
+        embedBitcode(BitcodeEmbeddingMode.BITCODE)
     }
 }
