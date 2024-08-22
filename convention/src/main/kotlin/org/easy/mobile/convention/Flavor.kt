@@ -5,6 +5,9 @@ import com.android.build.api.dsl.ApplicationProductFlavor
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.ProductFlavor
 import org.gradle.api.Project
+import java.io.FileInputStream
+import java.io.InputStreamReader
+import java.util.Properties
 
 enum class FlavorDimension {
     Environment
@@ -15,7 +18,7 @@ enum class Flavor(val dimension: FlavorDimension, val applicationIdSuffix: Strin
     prod(FlavorDimension.Environment)
 }
 
-fun Project.configureFlavors(
+fun configureFlavors(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
     flavorConfigurationBlock: ProductFlavor.(flavor: Flavor) -> Unit = {}
 ) {
@@ -35,4 +38,19 @@ fun Project.configureFlavors(
             }
         }
     }
+}
+
+/**
+ * @param path 文件路径，相对于rootProject的路径
+ */
+fun Project.getPropertiesByFile(path: String): Properties {
+    val properties = Properties()
+    val keyPropertiesFile = rootProject.file(path)
+
+    if (keyPropertiesFile.isFile) {
+        InputStreamReader(FileInputStream(keyPropertiesFile), Charsets.UTF_8).use { reader ->
+            properties.load(reader)
+        }
+    }
+    return properties
 }
