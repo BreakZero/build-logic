@@ -1,11 +1,15 @@
 [versions]
-org-jetbrains-kotlin = "1.9.23"
-android-gradle-plugin = "8.4.0"
+kotlin = "2.0.20"
+android-gradle-plugin = "8.4.2"
+androidTools = "31.6.0"
 
 [libraries]
 # Dependencies of the included build-logic
 android-tools-build = { group = "com.android.tools.build", name = "gradle", version.ref = "android-gradle-plugin" }
-kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "org-jetbrains-kotlin" }
+android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+compose-gradle-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+
 
 [plugins]
 android-application = { id = "easy.android.application" }
